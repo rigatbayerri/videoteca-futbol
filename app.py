@@ -8,31 +8,35 @@ st.set_page_config(
     layout="centered"
 )
 
-# --- ESTIL I COLORS PERSONALITZATS (INSPIRATS EN EL LOGO) ---
+# --- ESTIL I COLORS PERSONALITZATS (AMB CONTRAST CORREGIT) ---
 st.markdown("""
     <style>
-    /* Fons general suau */
+    /* Fons general i text general ben visible */
     .stApp {
         background-color: #f7f5fa;
+        color: #2b1b3d;
     }
-    /* Estil dels títols principals amb el to lila/morat corporatiu */
-    h1, h2, h3 {
-        color: #4a2858; 
+    /* Forçar que tots els textos, títols i paràgrafs siguin foscos i llegibles */
+    h1, h2, h3, h4, h5, h6, p, span, label, div {
+        color: #2b1b3d !important;
+    }
+    /* Excepció per al text dins dels botons (que ha de ser blanc) */
+    .stButton>button, .stButton>button * {
+        color: white !important;
     }
     /* Personalització dels botons amb el morat del C.F. Ginesta */
     .stButton>button {
         background-color: #5c2d73;
-        color: white;
         border-radius: 8px;
         border: none;
         font-weight: bold;
     }
     .stButton>button:hover {
         background-color: #4a2858;
-        color: white;
     }
     /* Caixa de contrasenya i inputs */
     .stTextInput>div>div>input {
+        color: #2b1b3d !important;
         border-color: #5c2d73;
     }
     </style>
@@ -64,7 +68,7 @@ def comprovar_acces():
                 pass
                 
         st.title("🔒 Accés Restringit")
-        st.write("Espai privat per a les famílies del **C.F. Ginesta** Cadet F11. Introdueix la contrasenya:")
+        st.write("Espai privat per a les famílies del cadet F11 **C.F. Ginesta**. Introdueix la contrasenya:")
         
         password_input = st.text_input("Contrasenya:", type="password")
         if st.button("Entrar"):
@@ -86,7 +90,7 @@ def main():
         except:
             st.write("⚽")
     with col2:
-        st.title("C.F. Ginesta Cadet F11")
+        st.title("Videoteca C.F. Ginesta")
         st.markdown("*Partits de la temporada en alta qualitat*")
 
     st.divider()
