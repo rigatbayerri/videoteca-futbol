@@ -3,7 +3,7 @@ from supabase import create_client
 
 # --- CONFIGURACIÓ DE LA PÀGINA ---
 st.set_page_config(
-    page_title="Videoteca - Futbol Base",
+    page_title="GINESTA FC CADET F11",
     page_icon="⚽",
     layout="centered"
 )
@@ -41,7 +41,7 @@ def comprovar_acces():
 
 # --- APLICACIÓ PRINCIPAL ---
 def main():
-    st.title("⚽ Videoteca GINESTA FC CADET F11 - Partits")
+    st.title("⚽ GINESTA FC CADET F11 - Partits")
     st.write("Espai privat per consultar i reproduir tots els partits de la temporada.")
 
     # Obtenir dades de Supabase
