@@ -19,7 +19,7 @@ def init_supabase():
 supabase = init_supabase()
 
 # --- SISTEMA DE CLAU D'ACCÉS (PRIVACITAT FAMILIARS) ---
-CONTRASENYA_FAMILIARS = "manresa2026"
+CONTRASENYA_FAMILIARS = "ginesta2026"
 
 def comprovar_acces():
     if "autoritzat" not in st.session_state:
@@ -41,7 +41,7 @@ def comprovar_acces():
 
 # --- APLICACIÓ PRINCIPAL ---
 def main():
-    st.title("⚽ Videoteca Oficial - Partits")
+    st.title("⚽ Videoteca GINESTA FC CADET F11 - Partits")
     st.write("Espai privat per consultar i reproduir tots els partits de la temporada.")
 
     # Obtenir dades de Supabase
