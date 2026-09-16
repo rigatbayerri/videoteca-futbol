@@ -105,7 +105,7 @@ def main():
             st.write("⚽")
     with col2:
         st.title("Partits Cadet F11")
-        st.markdown("*Partits de la temporada*")
+        st.markdown("*Partits de la temporada 2026/27*")
 
     st.divider()
 
