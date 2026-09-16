@@ -34,6 +34,14 @@ st.markdown("""
         background-color: #4a2858;
     }
     
+    /* --- CAIXA DE CONTRASENYA (Fons blanc i text fosc ben visible) --- */
+    .stTextInput>div>div>input {
+        background-color: white !important;
+        color: #2b1b3d !important;
+        border: 2px solid #5c2d73 !important;
+        border-radius: 8px !important;
+    }
+    
     /* --- SELECTOR DE PARTITS (Fons lila i lletres blanques) --- */
     div[data-baseweb="select"] > div {
         background-color: #5c2d73 !important;
@@ -46,12 +54,6 @@ st.markdown("""
     div[data-baseweb="select"] span, div[data-baseweb="select"] svg {
         color: white !important;
         fill: white !important;
-    }
-    
-    /* Caixa de text de contrasenya */
-    .stTextInput>div>div>input {
-        color: #2b1b3d !important;
-        border-color: #5c2d73;
     }
     </style>
 """, unsafe_allow_html=True)
