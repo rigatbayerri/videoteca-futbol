@@ -8,24 +8,23 @@ st.set_page_config(
     layout="centered"
 )
 
-# --- ESTIL I COLORS PERSONALITZATS (AMB CONTRAST CORREGIT) ---
+# --- ESTIL I COLORS PERSONALITZATS ---
 st.markdown("""
     <style>
-    /* Fons general i text general ben visible */
+    /* Fons general de l'aplicació */
     .stApp {
         background-color: #f7f5fa;
         color: #2b1b3d;
     }
-    /* Forçar que tots els textos, títols i paràgrafs siguin foscos i llegibles */
-    h1, h2, h3, h4, h5, h6, p, span, label, div {
+    
+    /* Textos generals visibles */
+    h1, h2, h3, h4, h5, h6, p, label {
         color: #2b1b3d !important;
     }
-    /* Excepció per al text dins dels botons (que ha de ser blanc) */
+    
+    /* Botons principals (lila amb lletra blanca) */
     .stButton>button, .stButton>button * {
         color: white !important;
-    }
-    /* Personalització dels botons amb el morat del C.F. Ginesta */
-    .stButton>button {
         background-color: #5c2d73;
         border-radius: 8px;
         border: none;
@@ -34,7 +33,22 @@ st.markdown("""
     .stButton>button:hover {
         background-color: #4a2858;
     }
-    /* Caixa de contrasenya i inputs */
+    
+    /* --- SELECTOR DE PARTITS (Fons lila i lletres blanques) --- */
+    div[data-baseweb="select"] > div {
+        background-color: #5c2d73 !important;
+        color: white !important;
+        border-color: #4a2858 !important;
+        border-radius: 8px;
+    }
+    
+    /* Text interior del selectbox i icones */
+    div[data-baseweb="select"] span, div[data-baseweb="select"] svg {
+        color: white !important;
+        fill: white !important;
+    }
+    
+    /* Caixa de text de contrasenya */
     .stTextInput>div>div>input {
         color: #2b1b3d !important;
         border-color: #5c2d73;
