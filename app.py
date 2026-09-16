@@ -104,7 +104,7 @@ def main():
         except:
             st.write("⚽")
     with col2:
-        st.title("Partits Cadet F11 C.F. Ginesta")
+        st.title("Partits Cadet F11")
         st.markdown("*Partits de la temporada*")
 
     st.divider()
