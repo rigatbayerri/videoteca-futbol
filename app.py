@@ -104,8 +104,8 @@ def main():
         except:
             st.write("⚽")
     with col2:
-        st.title("Videoteca C.F. Ginesta")
-        st.markdown("*Partits de la temporada en alta qualitat*")
+        st.title("Partits Cadet F11 C.F. Ginesta")
+        st.markdown("*Partits de la temporada*")
 
     st.divider()
 
