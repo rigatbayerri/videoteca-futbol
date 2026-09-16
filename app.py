@@ -3,14 +3,44 @@ from supabase import create_client
 
 # --- CONFIGURACIÓ DE LA PÀGINA ---
 st.set_page_config(
-    page_title="GINESTA FC CADET F11",
+    page_title="Videoteca - C.F. Ginesta",
     page_icon="⚽",
     layout="centered"
 )
 
+# --- ESTIL I COLORS PERSONALITZATS (INSPIRATS EN EL LOGO) ---
+st.markdown("""
+    <style>
+    /* Fons general suau */
+    .stApp {
+        background-color: #f7f5fa;
+    }
+    /* Estil dels títols principals amb el to lila/morat corporatiu */
+    h1, h2, h3 {
+        color: #4a2858; 
+    }
+    /* Personalització dels botons amb el morat del C.F. Ginesta */
+    .stButton>button {
+        background-color: #5c2d73;
+        color: white;
+        border-radius: 8px;
+        border: none;
+        font-weight: bold;
+    }
+    .stButton>button:hover {
+        background-color: #4a2858;
+        color: white;
+    }
+    /* Caixa de contrasenya i inputs */
+    .stTextInput>div>div>input {
+        border-color: #5c2d73;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 # --- CONFIGURACIÓ DE SUPABASE ---
 SUPABASE_URL = "https://bufdixztdxrzyrdmueuk.supabase.co"
-SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ1ZmRpeHp0ZHhyenlyZG11ZXVrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk1NTk5ODcsImV4cCI6MjEwNTEzNTk4N30.R_yj76u6ed3K0wr9_407Ti1vq2EvgoFJvs2veaRbBKg"
+SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ1ZmRpeHp0ZHhyenlyZG11ZXVrIkwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk1NTk5ODcsImV4cCI6MjEwNTEzNTk4N30.R_yj76u6ed3K0wr9_407Ti1vq2EvgoFJvs2veaRbBKg"
 
 @st.cache_resource
 def init_supabase():
@@ -26,8 +56,15 @@ def comprovar_acces():
         st.session_state["autoritzat"] = False
 
     if not st.session_state["autoritzat"]:
-        st.title("🔒 Accés Restringit - Videoteca de l'Equip")
-        st.write("Aquest espai és privat per a les famílies. Introdueix la contrasenya per veure els partits.")
+        col1, col2, col3 = st.columns([1, 2, 1])
+        with col2:
+            try:
+                st.image("logo.png", width=160)
+            except:
+                pass
+                
+        st.title("🔒 Accés Restringit")
+        st.write("Espai privat per a les famílies del **C.F. Ginesta** Cadet F11. Introdueix la contrasenya:")
         
         password_input = st.text_input("Contrasenya:", type="password")
         if st.button("Entrar"):
@@ -41,8 +78,18 @@ def comprovar_acces():
 
 # --- APLICACIÓ PRINCIPAL ---
 def main():
-    st.title("⚽ GINESTA FC CADET F11 - Partits")
-    st.write("Espai privat per consultar i reproduir tots els partits de la temporada.")
+    # --- CAPÇALERA AMB EL LOGO DEL GINESTA ---
+    col1, col2 = st.columns([1, 4])
+    with col1:
+        try:
+            st.image("logo.png", width=100)
+        except:
+            st.write("⚽")
+    with col2:
+        st.title("C.F. Ginesta Cadet F11")
+        st.markdown("*Partits de la temporada en alta qualitat*")
+
+    st.divider()
 
     # Obtenir dades de Supabase
     try:
@@ -53,22 +100,21 @@ def main():
         partits = []
 
     if not partits:
-        st.info("Encara no hi ha partits pujats a la base de dades o no s'ha trobat cap fila.")
+        st.info("Encara no hi ha partits pujats a la base de dades.")
         return
 
-    # Crear una llista de títols per al menú desplegable
+    # Menú desplegable de partits
     opcions_partits = {f"{p.get('data', '')} - {p.get('titol', 'Sense títol')} ({p.get('jornada', '')})": p for p in partits}
     
-    partit_seleccionat_str = st.selectbox("Selecciona un partit:", list(opcions_partits.keys()))
+    partit_seleccionat_str = st.selectbox("Selecciona un partit per veure:", list(opcions_partits.keys()))
     partit_actual = opcions_partits[partit_seleccionat_str]
 
     st.divider()
 
-    # Informació del partit
+    # Informació i Reproductor
     st.subheader(partit_actual.get('titol'))
-    st.markdown(f"**Data:** {partit_actual.get('data')} | **Jornada:** {partit_actual.get('jornada')}")
+    st.markdown(f"📅 **Data:** {partit_actual.get('data')} &nbsp;&nbsp;|&nbsp;&nbsp; 🏆 **Jornada:** {partit_actual.get('jornada')}")
 
-    # Reproductor de vídeo
     video_url = partit_actual.get('enllaç_video')
     if video_url:
         st.video(video_url)
