@@ -111,16 +111,16 @@ def main():
 
     st.divider()
 
-    # Obtenir dades de Supabase
+    # Obtenir dades de Supabase amb depuració detallada
+    partits = []
     try:
         response = supabase.table("partits").select("*").order("data", desc=True).execute()
         partits = response.data
     except Exception as e:
-        st.error(f"Error al connectar amb la base de dades: {e}")
-        partits = []
+        st.error(f"❌ Detall tècnic de l'error de Supabase: {e}")
 
     if not partits:
-        st.info("Encara no hi ha partits pujats a la base de dades.")
+        st.warning("No s'ha pogut carregar cap partit de la base de dades. Revisa si l'error mostrat amunt dóna cap pista.")
         return
 
     # Menú desplegable de partits
