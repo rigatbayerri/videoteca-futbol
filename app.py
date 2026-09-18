@@ -60,7 +60,8 @@ st.markdown("""
 
 # --- CONFIGURACIÓ DE SUPABASE ---
 SUPABASE_URL = "https://bufdixztdxrzyrdmueuk.supabase.co"
-SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ1ZmRpeHp0ZHhyenlyZG11ZXVrIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk1NTk5ODcsImV4cCI6MjEwNTEzNTk4N30.R_yj76u6ed3K0wr9_407Ti1vq2EvgoFJvs2veaRbBKg"
+SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ1ZmRpeHp0ZHhyenlyZG11ZXVrIkwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk1NTk5ODcsImV4cCI6MjEwNTEzNTk4N30.R_yj76u6ed3K0wr9_407Ti1vq2EvgoFJvs2veaRbBKg"
+
 @st.cache_resource
 def init_supabase():
     return create_client(SUPABASE_URL, SUPABASE_KEY)
